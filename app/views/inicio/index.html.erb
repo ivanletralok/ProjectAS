@@ -2,18 +2,47 @@
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">PQR's</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
+            
         </ul>
     </div>
 </nav>
-<% if usuario_actual %>
-    Usuario logeado <%= usuario_actual.email %>
-    <%= link_to "Cerrar sesión", "cerrarSesion" %>
-<% else %>
-    <%= link_to "Registrarse", "registro" %> O
-    <%= link_to "Iniciar sesión", "iniciarSesion" %>
-<% end %>
 
-<p id=”notice”><%= notice %></p>
+<div class="contenido">
+
+    <div class="texto">
+        <p> <strong>ABC</strong> es una entidad estatal colombiana que se encuentra preocupada por la política de
+            eficiencia administrativa.</p>
+
+        <p>
+            “La gerencia pública moderna y eficiente busca un Estado con capacidad permanente para mejorar su gestión,
+            sus espacios de participación y su interlocución con la sociedad, en procura de la prestación de mejores y
+            más efectivos servicios”
+        </p>
+
+        <p>
+            Dado lo anterior y teniendo en cuenta que la ley obliga (Ley 1474 de 2011) a todas las entidades públicas a
+            disponer de un link por el cual los ciudadanos puedan realizar PQRS.</p>
+        <p>
+            el consejo directivo ha aprobado la contratación de una empresa encargada del desarrollo y puesta en marcha
+            de sistema que gestione todos las peticiones, sugerencias, quejas y reclamos que le llegan
+        </p>
+
+        <div class="login">
+
+            <% if usuario_actual %>
+            Usuario logeado
+            <%= usuario_actual.email %>
+            <%= link_to "Cerrar sesión", "cerrarSesion" %>
+            <% else %>
+            <%= link_to "Registrarse", "registro", :class => 'btn' %> 
+            <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
+            <% end %>
+            </div>
+       
+    </div>
+    
+
+    <p id=”notice”>
+        <%= notice %>
+    </p>
+</div>
