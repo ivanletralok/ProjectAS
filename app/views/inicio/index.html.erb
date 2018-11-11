@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">PQR's</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-            
+
         </ul>
     </div>
 </nav>
@@ -34,14 +34,13 @@
             <%= usuario_actual.email %>
             <%= link_to "Cerrar sesión", "cerrarSesion" %>
             <% else %>
-            <%= link_to "Registrarse", "registro", :class => 'btn' %> 
+            <%= link_to "Registrarse", "registro", :class => 'btn' %>
             <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
             <% end %>
-            </div>
-       
+        </div>
+
     </div>
     
-
     <p id=”notice”>
         <%= notice %>
     </p>
