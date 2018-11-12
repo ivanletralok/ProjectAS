@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <title>FinalArquitectura</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>FinalArquitectura</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="" class="brand-logo center">PQR's</a>
+        <ul class="Bnav">  
+        <% if usuario_actual %>
+            <li> Usuario: <%= usuario_actual.nombre %> </li>
+            <li> <%= link_to "Cerrar sesión" , "cerrarSesion" %></li>
+        <% end %>
+        </ul>
+    </div>
+</nav>
+<% if usuario_actual %>
+  <% if usuario_actual.rol.descripcion == "Super Admin" %>
+    <ul class=" acorh">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="pqrs">Listar PQR</a></li>
+      <li><a href="usuarios">Listar Usuarios</a></li>
+        <li><a href="#">Gestion De Rol</a>
+          <ul>
+            <li><a href="rols/new">Nuevo Rol</a></li>
+            <li><a href="rols">Listar Roles</a></li>
+          </ul>
+         </li>
+    </ul>
+  <% end %>
+<% end %>
+  
+  <%= yield %>
+
+</body>
+
 </html>

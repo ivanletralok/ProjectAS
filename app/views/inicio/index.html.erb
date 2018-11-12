@@ -1,11 +1,3 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">PQR's</a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-
-        </ul>
-    </div>
-</nav>
 
 <div class="contenido">
 
@@ -30,12 +22,11 @@
         <div class="login">
 
             <% if usuario_actual %>
-            Usuario logeado
-            <%= usuario_actual.email %>
-            <%= link_to "Cerrar sesión", "cerrarSesion" %>
+                Usuario logeado
+                <%= usuario_actual.rol.descripcion %>
             <% else %>
-            <%= link_to "Registrarse", "registro", :class => 'btn' %>
-            <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
+                <%= link_to "Registrarse", "registro", :class => 'btn' %>
+                <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
             <% end %>
         </div>
 

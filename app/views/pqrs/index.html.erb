@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pqrs</h1>
+<table class="striped">
 
-<table>
   <thead>
+    
     <tr>
       <th>Fecha</th>
       <th>Descripcion</th>
@@ -32,9 +32,9 @@
         <td><%= pqr.usuario.nombre %></td>
         <td><%= pqr.dependencium.descripcion %></td>
         <td><%= pqr.respuesta %></td>
-        <td><%= link_to 'Show', pqr %></td>
-        <td><%= link_to 'Edit', edit_pqr_path(pqr) %></td>
-        <td><%= link_to 'Destroy', pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '<i class="tiny material-icons">visibility</i>'.html_safe, pqr %></td>
+        <td><%= link_to '<i class="tiny material-icons">mode_edit</i>'.html_safe, edit_pqr_path(pqr) %></td>
+        <td><%= link_to '<i class="tiny material-icons">delete</i>'.html_safe, pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Pqr', new_pqr_path %>
+<%= link_to 'New Pqr', new_pqr_path , :class => "btn" %>

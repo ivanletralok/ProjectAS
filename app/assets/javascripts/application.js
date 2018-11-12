@@ -14,11 +14,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
         var botonFlotante = document.querySelectorAll('.fixed-action-btn');
         var initBotonFlotante = M.FloatingActionButton.init(botonFlotante, {});
         var fecha = document.querySelectorAll('.datepicker');
         var initFecha = M.Datepicker.init(fecha, {});
-    }
+    } 
 };
+
