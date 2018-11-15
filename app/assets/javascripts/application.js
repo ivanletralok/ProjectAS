@@ -26,3 +26,10 @@ document.onreadystatechange = () => {
     } 
 };
 
+// $( document ).ready(function() {
+//     console.log( "ready!" );
+// });
+
+// $("#CrearPQR").click(function(){
+//     console.log("click en crear pqr")
+// });

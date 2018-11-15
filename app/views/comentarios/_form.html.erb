@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :fecha %>
-    <%= form.datetime_select :fecha %>
+    <%= form.text_field :fecha, :class => 'datepicker' %>
   </div>
 
   <div class="field">

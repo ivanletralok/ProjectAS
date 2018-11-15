@@ -4,11 +4,16 @@ class PqrsController < ApplicationController
   # GET /pqrs
   # GET /pqrs.json
   def index
-    if usuario_actual
+
+    if usuario_actual && usuario_actual.rol.descripcion == "Super Admin"
       @pqrs = Pqr.all
-    else
-      redirect_to root_url, notice: "Debes loguearte!"
+    elsif usuario_actual.dependencium.descripcion != "director" 
+      @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
+    else 
+      redirect_to root_url, notice: "Debes loguearte o no tienes permisos"
+      
     end
+     
   end
 
   # GET /pqrs/1

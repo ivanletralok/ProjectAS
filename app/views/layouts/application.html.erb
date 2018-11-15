@@ -31,18 +31,26 @@
       <li><a href="/">Inicio</a></li>
       <li><a href="pqrs">Listar PQR</a></li>
       <li><a href="usuarios">Listar Usuarios</a></li>
+      <li><a href="comentarios">Listar Comentarios</a></li>
         <li><a href="#">Gestion De Rol</a>
           <ul>
             <li><a href="rols/new">Nuevo Rol</a></li>
             <li><a href="rols">Listar Roles</a></li>
           </ul>
-         </li>
+        </li>
     </ul>
   <% end %>
 <% end %>
-  
-  <%= yield %>
 
+
+<% if usuario_actual && usuario_actual.dependencium.descripcion == "Juridica" %>
+  <li><a href="pqrs">Listar PQR</a></li>
+<% end %>
+
+
+
+<%= yield %>
+  
 </body>
 
 </html>

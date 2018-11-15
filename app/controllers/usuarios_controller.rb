@@ -33,6 +33,11 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new
     @usuario = Usuario.new(usuario_params)
 
+    if @usuario.rol == nil && @usuario.dependencium == nil
+      @usuario.rol = Rol.find_by(descripcion: "Usuario") #usuario
+      @usuario.dependencium = Dependencium.find_by(descripcion: "usuarioNormal") # usuarioNormal
+    end
+
     respond_to do |format|
       if @usuario.save
         format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
