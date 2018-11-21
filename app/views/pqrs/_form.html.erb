@@ -30,10 +30,13 @@
       <%= form.text_field :usuario_id, value: usuario_actual.id %>
     </div>
   
-    <div class="input-field">
-    <%= form.label :Dependencia, {}, {:class => "arriba"} %>
-      <%= form.select :dependencium_id, Dependencium.all.collect{ |a| [ a.descripcion, a.id] }, {}, {:class => 'browser-default'} %>
-    </div>
+    <% if usuario_actual && usuario_actual.rol.descripcion == "Super Admin"%>
+      <div class="input-field">
+        <%= form.label :Dependencia, {}, {:class => "arriba"} %>
+        <%= form.select :dependencium_id, Dependencium.all.collect{ |a| [ a.descripcion, a.id] }, {}, {:class => 'browser-default'} %>
+      </div>
+    <% end %>
+    
 
   <div class="field">
     <%= form.submit "Crear" %>

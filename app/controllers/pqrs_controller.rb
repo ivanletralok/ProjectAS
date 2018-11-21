@@ -3,17 +3,31 @@ class PqrsController < ApplicationController
 
   # GET /pqrs
   # GET /pqrs.json
-  def index
+  def index 
+    if usuario_actual 
+      if usuario_actual.dependencium.descripcion == "usuarioNormal"
+          @pqrs = Pqr.where(usuario: usuario_actual.id)
+      elsif usuario_actual.rol.descripcion == "Super Admin"
+        @pqrs = Pqr.all
+      else
+        @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
+      end
 
-    if usuario_actual && usuario_actual.rol.descripcion == "Super Admin"
-      @pqrs = Pqr.all
-    elsif usuario_actual.dependencium.descripcion != "director" 
-      @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
-    else 
-      redirect_to root_url, notice: "Debes loguearte o no tienes permisos"
+      if usuario_actual.dependencium.descripcion == "Juridica"
+        @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
+      end
+
+      if usuario_actual.dependencium.descripcion == "Financiera"
+        @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
+      end
+
+      if usuario_actual.dependencium.descripcion == "Administrativa"
+        @pqrs = Pqr.where(dependencium: usuario_actual.dependencium)
+      end
       
+      else
+      redirect_to root_url, notice: "Debes loguearte o no tienes permisos"
     end
-     
   end
 
   # GET /pqrs/1
@@ -37,8 +51,13 @@ class PqrsController < ApplicationController
   # POST /pqrs
   # POST /pqrs.json
   def create
-
     @pqr = Pqr.new(pqr_params)
+   
+    #asignar a todos los pqr por defecto al director
+    
+    if  @pqr.dependencium == nil
+        @pqr.dependencium = Dependencium.find_by(descripcion: "Director")
+    end
 
     @pqr.estado = false
 

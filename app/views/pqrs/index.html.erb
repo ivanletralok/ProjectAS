@@ -18,25 +18,29 @@
 
   <tbody>
     <% @pqrs.each do |pqr| %>
-      <tr>
-        <td><%= pqr.fecha %></td>
-        <td><%= pqr.descripcion %></td>
-        <td>
-          <a href="/<%= pqr.archivo %>" target="_blank" >Archivo</a>
-        </td>
-        <% if pqr.estado %>
-          <td>Respondido</td>
-        <% else %>
-          <td>Sin respuesta</td>
-        <% end %>
-        <td><%= pqr.usuario.nombre %></td>
-        <td><%= pqr.dependencium.descripcion %></td>
-        <td><%= pqr.respuesta %></td>
-        <td><%= link_to '<i class="tiny material-icons">visibility</i>'.html_safe, pqr %></td>
-        <td><%= link_to '<i class="tiny material-icons">mode_edit</i>'.html_safe, edit_pqr_path(pqr) %></td>
-        <td><%= link_to '<i class="tiny material-icons">delete</i>'.html_safe, pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      
+        <tr>
+            <td><%= pqr.fecha %></td>
+            <td><%= pqr.descripcion %></td>
+            <td>
+              <a href="/<%= pqr.archivo %>" target="_blank" >Archivo</a>
+            </td>
+            <% if pqr.estado %>
+              <td>Respondido</td>
+            <% else %>
+              <td>Sin respuesta</td>
+            <% end %>
+          <td><%= pqr.usuario.nombre %></td>
+          <td><%= pqr.dependencium.descripcion %></td>
+          <td><%= pqr.respuesta %></td>
+        <%if usuario_actual.rol.descripcion == "Super Admin"%>
+          <td><%= link_to '<i class="tiny material-icons">visibility</i>'.html_safe, pqr %></td>
+          <td><%= link_to '<i class="tiny material-icons">mode_edit</i>'.html_safe, edit_pqr_path(pqr) %></td>
+          <td><%= link_to '<i class="tiny material-icons">delete</i>'.html_safe, pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
+     
   </tbody>
 </table>
 

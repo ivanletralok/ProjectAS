@@ -31,8 +31,10 @@
             <% if usuario_actual.rol.descripcion == "Usuario"%>
             <div class="pqr-usuario">
                 <%= link_to 'Crear PQR', new_pqr_path , :class => "btn" %>
+                <li><a href="pqrs">Mis PQR</a></li>
             </div>
             <% end %>
+            
             <% end %>
         </div>
 
