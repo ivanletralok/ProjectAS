@@ -1,46 +1,25 @@
 <div class="contenido">
 
     <div class="texto">
-        <p> <strong>ABC</strong> es una entidad estatal colombiana que se encuentra preocupada por la política de
-            eficiencia administrativa.</p>
-
-        <p>
-            “La gerencia pública moderna y eficiente busca un Estado con capacidad permanente para mejorar su gestión,
-            sus espacios de participación y su interlocución con la sociedad, en procura de la prestación de mejores y
-            más efectivos servicios”
-        </p>
-
-        <p>
-            Dado lo anterior y teniendo en cuenta que la ley obliga (Ley 1474 de 2011) a todas las entidades públicas a
-            disponer de un link por el cual los ciudadanos puedan realizar PQRS.</p>
-        <p>
-            el consejo directivo ha aprobado la contratación de una empresa encargada del desarrollo y puesta en marcha
-            de sistema que gestione todos las peticiones, sugerencias, quejas y reclamos que le llegan
-        </p>
-
+        
         <div class="login">
-
             <% if usuario_actual %>
-           <!-- <%= usuario_actual.rol.descripcion %> -->
-            <% else %>
-            <%= link_to "Registrarse", "registro", :class => 'btn' %>
-            <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
-            <% end %>
-
-            <% if usuario_actual %>
-            <% if usuario_actual.rol.descripcion == "Usuario"%>
-            <div class="pqr-usuario">
-                <%= link_to 'Crear PQR', new_pqr_path , :class => "btn" %>
-                <li><a href="pqrs">Mis PQR</a></li>
-            </div>
-            <% end %>
-            
+                <% if usuario_actual.rol.descripcion == "Usuario"%>
+                    <div class="pqr-usuario">
+                        <%= link_to 'Crear PQR', new_pqr_path , :class => "btn" %>
+                        <li><a href="pqrs">Mis PQR</a></li>
+                    </div>
+                <% end %>
             <% end %>
         </div>
-
+        <div class="loginC">
+        <% if usuario_actual %>
+            <% else %>
+                <%= link_to "Registrarse", "registro", :class => 'btn' %>
+                <%= link_to "Iniciar sesión", "iniciarSesion",:class => 'btn' %>
+        <%end%>
     </div>
+    </div>
+    
 
-    <p id=”notice”>
-        <%= notice %>
-    </p>
 </div>

@@ -2,25 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.brand-logo{
+    color: beige !important; 
+}
 nav .nav-wrapper {
-    background-color: #43a69b;
+    background-color: #203c9e;
 }
 
 .texto{
-    border: solid 2px #43a69b;
-    /* width: 80%; */
-    /* height: 100%; */
-    margin-left: 8%;
-    margin-right: 8%;
+    border: solid 3px #084ba0;
+    margin-left: 15%;
+    margin-right: 13%;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 35px;
     margin-top: 6%;
-}
-
-.texto p{
-    font-size: 22px;
-    font-family: none;
-    text-align: justify;
+    height: 550px;
+    background-image: url(pqr.png);
+    background-size: cover;
 }
 
 .login{
@@ -68,9 +67,8 @@ ul.acorh li a {
     display: block;
     padding: 10px 10px 10px 20px;
     /* background: #333; */
-    color: #43a59b;
-    /* text-decoration: none; */
-    /* box-sizing: border-box; */
+    color: #203c9e !important;
+    
 }
 ul.acorh li ul {
     max-height: 0;
@@ -82,7 +80,7 @@ ul.acorh li ul {
 }
 ul.acorh li li a {
     padding: 10px 10px 10px 40px;
-    background: #999;
+    background: #EAEDED !important;
     color: #000;
     font-size: 16px;
     border: 0;
@@ -97,7 +95,7 @@ ul.acorh li:hover ul {
     transition: .3s all ease-in;
 }
 ul.acorh li a:hover {
-    background: #666;
+    background: #EAEDED !important;
     color: #fff;
 }
 
@@ -114,4 +112,27 @@ ul.acorh li a:hover {
     height: 40px;
     margin-left: 45%;
     margin-right: 40%;
+}
+
+nav ul a {
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    font-size: 1rem;
+    color: blue !important;
+    display: block;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.loginC{
+    margin-top: 42%;
+    margin-left: 68%;
+}
+a:visited {
+    color: #fff !important;
+}
+
+.btn{
+    background-color: #0562b0;
 }

@@ -2,7 +2,7 @@
 
 <h1>Comentarios</h1>
 
-<table>
+<table class="striped">
   <thead>
     <tr>
       <th>Fecha</th>
@@ -22,9 +22,9 @@
         <td><%= Dependencium.find(comentario.depanterior).descripcion%></td>
         <td><%= Dependencium.find(comentario.depactual).descripcion%></td>
         <td><%= comentario.pqr.descripcion %></td>
-        <td><%= link_to 'Show', comentario %></td>
-        <td><%= link_to 'Edit', edit_comentario_path(comentario) %></td>
-        <td><%= link_to 'Destroy', comentario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '<i class="tiny material-icons">visibility</i>'.html_safe, comentario %></td>
+        <td><%= link_to '<i class="tiny material-icons">mode_edit</i>'.html_safe, edit_comentario_path(comentario) %></td>
+        <td><%= link_to '<i class="tiny material-icons">delete</i>'.html_safe, comentario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

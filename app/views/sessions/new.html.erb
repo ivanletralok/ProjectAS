@@ -1,6 +1,7 @@
 <p id="alert"><%= alert %></p>
 <h1>Iniciar sesión</h1>
-<%= form_tag sessions_path do |form| %>
+<div class = "loginS">
+  <%= form_tag sessions_path do |form|%>
   <div class="field">
     <%= label_tag :Correo %>
     <%= text_field_tag :email %>
@@ -10,6 +11,7 @@
     <%= password_field_tag :password %>
   </div>
   <div class="actions">
-    <%= submit_tag "Iniciar Sesión" %>
+    <%= submit_tag "Iniciar Sesión", :class => "btn" %>
   </div>
 <% end %>
+</div>
