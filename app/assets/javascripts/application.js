@@ -23,13 +23,15 @@ document.onreadystatechange = () => {
         var initBotonFlotante = M.FloatingActionButton.init(botonFlotante, {});
         var fecha = document.querySelectorAll('.datepicker');
         var initFecha = M.Datepicker.init(fecha, {});
-    } 
+    }
 };
 
-// $( document ).ready(function() {
-//     console.log( "ready!" );
-// });
+$(document).ready(function () {
+    console.log("ready!");
+    $("#Comentario").click(function () {
+        swal("Hello world!",
+        );
+    });
+});
 
-// $("#CrearPQR").click(function(){
-//     console.log("click en crear pqr")
-// });
+

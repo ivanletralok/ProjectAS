@@ -10,7 +10,9 @@
       <th>Archivo</th>
       <th>Estado</th>
       <th>Usuario</th>
+      <%if usuario_actual.rol.descripcion == "Super Admin"%>
       <th>Dependencium</th>
+      <% end %>
       <th>Respuesta</th>
       <th colspan="3"></th>
     </tr>
@@ -31,9 +33,11 @@
               <td>Sin respuesta</td>
             <% end %>
           <td><%= pqr.usuario.nombre %></td>
+          <%if usuario_actual.rol.descripcion == "Super Admin"%>
           <td><%= pqr.dependencium.descripcion %></td>
+          <% end %>
           <td><%= pqr.respuesta %></td>
-        <%if usuario_actual.rol.descripcion == "Super Admin"%>
+        <%if usuario_actual.dependencium.descripcion != "usuarioNormal"%>
           <td><%= link_to '<i class="tiny material-icons">visibility</i>'.html_safe, pqr %></td>
           <td><%= link_to '<i class="tiny material-icons">mode_edit</i>'.html_safe, edit_pqr_path(pqr) %></td>
           <td><%= link_to '<i class="tiny material-icons">delete</i>'.html_safe, pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -45,5 +49,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Pqr', new_pqr_path , :class => "btn" %>
+  <% if usuario_actual.dependencium.descripcion == "usuarioNormal"%>
+    <%= link_to 'New Pqr', new_pqr_path , :class => "btn" %>
+  <% end %>

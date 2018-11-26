@@ -26,6 +26,7 @@ class ComentariosController < ApplicationController
   def create
     @comentario = Comentario.new(comentario_params)
 
+
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
@@ -61,6 +62,28 @@ class ComentariosController < ApplicationController
     end
   end
 
+  def prueba
+    p = Pqr.find(params["pqr_id"])
+    dep = Dependencium.find(params["dependencium_id"])
+    p.dependencium_id = dep.id
+    p.save
+    render :json => p
+  end
+
+  def prueba_comentario
+    c = Comentario.new
+    c.comentario = params['comentario']
+    c.depactual	= params['depactual']
+    c.depanterior	= params['depanterior']
+    c.fecha	= params['fecha']
+    c.pqr_id	= params['pqr_id']
+    c.save
+    
+    render :json => c
+  end
+
+  def comentario
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comentario

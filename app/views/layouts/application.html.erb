@@ -5,7 +5,7 @@
   <title>FinalArquitectura</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -19,24 +19,23 @@
         <a href="" class="brand-logo center">PQR's</a>
         <ul class="Bnav">  
         <% if usuario_actual %>
-            <li> Usuario: <%= usuario_actual.nombre %> </li>
+            <li> Usuario: <%= usuario_actual.nombre %> - <%= usuario_actual.dependencium.descripcion %></li>
             <li> <%= link_to "Cerrar sesión" , "cerrarSesion" %></li>
         <% end %>
         </ul>
     </div>
 </nav>
 <% if usuario_actual %>
-<li><a href="/">Inicio</a></li>
   <% if usuario_actual.rol.descripcion == "Super Admin" %>
     <ul class=" acorh">
       <li><a href="/">Inicio</a></li>
-      <li><a href="pqrs">Listar PQR</a></li>
-      <li><a href="usuarios">Listar Usuarios</a></li>
-      <li><a href="comentarios">Listar Comentarios</a></li>
+      <li><%= link_to 'Listar Pqr', pqrs_path %></li>
+      <li><%= link_to 'Listar usuarios', usuarios_path %></li>
+      <li><%= link_to 'Listar comentarios', comentarios_path %></li>
         <li><a href="#">Gestion De Rol</a>
           <ul>
             <li><a href="rols/new">Nuevo Rol</a></li>
-            <li><a href="rols">Listar Roles</a></li>
+            <li><%= link_to 'Listar Rols', rols_path %></li>
           </ul>
         </li>
     </ul>
@@ -44,14 +43,21 @@
 <% end %>
 
 
-<% if usuario_actual && usuario_actual.dependencium.descripcion == "Juridica" %>
-  <li><a href="pqrs">Listar PQR</a></li>
+<% if usuario_actual && usuario_actual.dependencium.descripcion != "usuarioNormal"%>
+  <% if usuario_actual.rol.descripcion != "Super Admin"%>
+    <ul class= "acorh">
+      <li><a href="/">Inicio</a></li>
+      <li><%= link_to 'Listar Pqr', pqrs_path %></li>
+      <li><%= link_to 'Listar comentarios', comentarios_path%></li>
+    </ul>
+    
+  <% end %>
 <% end %>
 
 
-
 <%= yield %>
-  
+
+<li><a href="/">Inicio</a></li>
 </body>
 
 </html>

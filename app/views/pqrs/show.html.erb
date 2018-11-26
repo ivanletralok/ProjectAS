@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<%= content_for(:body_attributes, 'data-no-turbolink') %>
+
+<p id="notice">
+  <%= notice %>
+</p>
 <div class="">
-  <p>
+  <!-- <p>
     <strong>Fecha:</strong>
     <%= @pqr.fecha %>
   </p>
@@ -33,9 +37,29 @@
   <p>
     <strong>Respuesta:</strong>
     <%= @pqr.respuesta %>
-  </p>
-</div>
+  </p>-->
 
+</div>
+<div class="content">
+
+  <% if usuario_actual %>
+    <%if usuario_actual.dependencium.descripcion != "usuarioNormal"%>
+      <div class="int">
+        <%= form_with url: "/prueba", method: "POST" do |form| %>
+
+          <div class="input-field">
+            <input type="number" value="<%=@pqr.id %>" name="pqr_id" hidden />
+            <%= form.select :dependencium_id, Dependencium.all.collect{ |a| [ a.descripcion, a.id] }, {}, {:class => 'browser-default'} %>
+          </div>
+
+        <%= form.submit name="cambiar dependencia", :class =>"btn Cam" %>
+      <% end %>
+      </div>
+    <%end%>
+  <% end %>
+
+
+</div>
 
 <%= link_to 'Edit', edit_pqr_path(@pqr) %> |
 <%= link_to 'Back', pqrs_path %>

@@ -30,9 +30,12 @@ class PqrsController < ApplicationController
     end
   end
 
+  
+
   # GET /pqrs/1
   # GET /pqrs/1.json
   def show
+    @comentario = Comentario.new
   end
 
   # GET /pqrs/new
@@ -53,8 +56,7 @@ class PqrsController < ApplicationController
   def create
     @pqr = Pqr.new(pqr_params)
    
-    #asignar a todos los pqr por defecto al director
-    
+    #asignar a todos los pqr por defecto al director 
     if  @pqr.dependencium == nil
         @pqr.dependencium = Dependencium.find_by(descripcion: "Director")
     end
@@ -80,6 +82,50 @@ class PqrsController < ApplicationController
     
   end
 
+  def prueba
+    p = Pqr.find(params["pqr_id"])
+    dep = Dependencium.find(params["dependencium_id"])
+    ant = p.dependencium_id
+    p.dependencium_id = dep.id
+    p.save
+
+    enviar = {
+      id: params[:pqr_id],
+      depAc: params[:dependencium_id],
+      depAn: ant    }
+    Rails.logger.debug "****************"
+    redirect_to new_comentario_path(enviar)
+    Rails.logger.debug "****************"
+  end
+
+
+  def prueba_comentario
+    c = Comentario.new
+    c.comentario = params['comentario']
+    c.depactual	= params['depactual']
+    c.depanterior	= params['depanterior']
+    c.fecha	= params['fecha']
+    c.pqr_id	= params['pqr_id']
+    c.save
+
+    p = Pqr.find(params["pqr_id"])
+    dep = Dependencium.find(params["dependencium_id"])
+    ant = p.dependencium_id
+    p.dependencium_id = dep.id
+
+    enviar = {
+      id: params[:pqr_id],
+      depAc: params[:dependencium_id],
+      depAn: ant  
+    }
+
+    comentarios_path(enviar)
+    
+    # render :json => c
+  end
+
+  def coment
+  end
   # PATCH/PUT /pqrs/1
   # PATCH/PUT /pqrs/1.json
   def update
@@ -114,4 +160,5 @@ class PqrsController < ApplicationController
     def pqr_params
       params.require(:pqr).permit(:fecha, :descripcion, :archivo, :estado, :usuario_id, :dependencium_id, :respuesta)
     end
+
 end
