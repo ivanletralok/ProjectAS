@@ -4,3 +4,9 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+Run::Task["assets:precompile"].enhance [:js_deps_isntall]
+
+task :js_deps_isntall do
+    sh "yarn install"
+end
