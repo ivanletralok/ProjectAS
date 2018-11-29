@@ -60,10 +60,8 @@
 
   <% if usuario_actual %>
     <%if usuario_actual.dependencium.descripcion != "usuarioNormal"%>
-            <div class="int">
+      <div class="int">
         <%= form_with  url: "/respuesta", method: "POST" do |form| %>
-
-
           <div class="field">
           
           <input type="number" value="<%=@pqr.id %>" name="pqr_id" hidden />
@@ -78,7 +76,7 @@
       </div>
     <%end%>
 
-
+<%end%>
 </div>
 
 <%= link_to 'Edit', edit_pqr_path(@pqr) %> |
