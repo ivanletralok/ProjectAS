@@ -127,7 +127,9 @@ class PqrsController < ApplicationController
   def respuesta
     r = Pqr.find(params[:pqr_id])
     r.respuesta = params[:respuesta]
+    r.estado = true
     r.save
+
     render :json => r
   end
 
