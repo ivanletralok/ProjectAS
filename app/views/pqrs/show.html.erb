@@ -59,7 +59,7 @@
   <% end %>
 
   <% if usuario_actual %>
-    <%if usuario_actual.dependencium.descripcion != "usuarioNormal"%>
+    <%if usuario_actual.rol.descripcion == "Super Admin" %>
       <div class="int">
         <%= form_with  url: "/respuesta", method: "POST" do |form| %>
           <div class="field">
