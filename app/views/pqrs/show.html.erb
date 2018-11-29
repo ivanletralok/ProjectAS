@@ -58,6 +58,26 @@
     <%end%>
   <% end %>
 
+  <% if usuario_actual %>
+    <%if usuario_actual.dependencium.descripcion != "usuarioNormal"%>
+            <div class="int">
+        <%= form_with  url: "/respuesta", method: "POST" do |form| %>
+
+
+          <div class="field">
+          
+          <input type="number" value="<%=@pqr.id %>" name="pqr_id" hidden />
+            <%= form.label :respuesta %>
+            <%= form.text_field :respuesta %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit name= "respuesta", :class =>"btn", :id => "coment" %>
+          </div>
+        <% end %>
+      </div>
+    <%end%>
+
 
 </div>
 

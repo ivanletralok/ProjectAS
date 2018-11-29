@@ -124,6 +124,13 @@ class PqrsController < ApplicationController
     # render :json => c
   end
 
+  def respuesta
+    r = Pqr.find(params[:pqr_id])
+    r.respuesta = params[:respuesta]
+    r.save
+    render :json => r
+  end
+
   def coment
   end
   # PATCH/PUT /pqrs/1
