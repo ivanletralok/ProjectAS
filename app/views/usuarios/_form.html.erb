@@ -31,6 +31,8 @@
     <%= form.text_field :celular %>
   </div>
 
+  <% if usuario_actual && usuario_actual.rol.descripcion == "Super Admin"%>
+
     <div class="input-field">
       <%= form.label :Rol, {}, {:class => "arriba"} %>
       <%= form.select :rol_id, Rol.all.collect{ |a| [ a.descripcion, a.id] }, {}, {:class => 'browser-default'} %>
@@ -41,7 +43,7 @@
       <%= form.select :dependencium_id, Dependencium.all.collect{ |a| [ a.descripcion, a.id] }, {}, {:class => 'browser-default'} %>
     </div>
 
- 
+  <% end %>
 
   <div class="input-field">
     <%= form.label :email %>
